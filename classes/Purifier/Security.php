@@ -33,19 +33,6 @@ class Purifier_Security extends Kohana_Security {
 	{
 		if ( ! Security::$htmlpurifier)
 		{
-			if ( ! class_exists('HTMLPurifier_Config', FALSE))
-			{
-				if (Kohana::$config->load('purifier.preload'))
-				{
-					// Load the all of HTML Purifier right now.
-					// This increases performance with a slight hit to memory usage.
-					require Kohana::find_file('vendor', 'htmlpurifier/library/HTMLPurifier.includes');
-				}
-
-				// Load the HTML Purifier auto loader
-				require Kohana::find_file('vendor', 'htmlpurifier/library/HTMLPurifier.auto');
-			}
-
 			// Create a new configuration object
 			$config = HTMLPurifier_Config::createDefault();
 
